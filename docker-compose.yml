@@ -1,0 +1,5 @@
+services:
+  poetry:
+    build:
+      context: .
+    platform: linux/arm/v7
