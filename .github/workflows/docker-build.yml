@@ -33,7 +33,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64/v8,linux/arm/v7
           push: true
-          tags: nanomad/poetry:2.1.3-python-2.12
+          tags: nanomad/poetry:2.1.3-python-3.12
           build-args: |
             PYTHON_VERSION=3.12
             POETRY_VERSION=2.1.3
