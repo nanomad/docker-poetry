@@ -1,4 +1,4 @@
-ARG PYTHON_VERSION=3.12
+ARG PYTHON_VERSION=3.13
 
 FROM python:${PYTHON_VERSION}-slim
 
@@ -16,7 +16,7 @@ RUN apt-get update  \
             curl \
     && rm -rf /var/lib/apt/lists/*
 
-ARG POETRY_VERSION=2.1.2
+ARG POETRY_VERSION=2.1.3
 ENV POETRY_VERSION=${POETRY_VERSION}
 ENV POETRY_HOME=/opt/poetry
 ENV POETRY_NO_INTERACTION=1
