@@ -1,6 +1,6 @@
 services:
   poetry-armv7:
-    image: nanomad/poetry:2.1.3-python-3.12
+    image: nanomad/poetry:2.3.2-python-3.12
     build:
       context: .
     platform: linux/arm/v7
@@ -8,7 +8,7 @@ services:
     command:
       - poetry --version
   poetry-arm64v8:
-    image: nanomad/poetry:2.1.3-python-3.12
+    image: nanomad/poetry:2.3.2-python-3.12
     build:
       context: .
     platform: linux/arm64/v8
@@ -16,7 +16,7 @@ services:
     command:
       - poetry --version
   poetry-amd64:
-    image: nanomad/poetry:2.1.3-python-3.12
+    image: nanomad/poetry:2.3.2-python-3.12
     build:
       context: .
     platform: linux/amd64
