@@ -6,9 +6,16 @@ on:
     - cron: '0 0 * * 0'
   workflow_dispatch:
 
+env:
+  POETRY_VERSION: "2.3.2"
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13", "3.14"]
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -25,41 +32,14 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and push (Python 3.12)
+      - name: Build and push (Python ${{ matrix.python-version }})
         uses: docker/build-push-action@v6
-        continue-on-error: false
         with:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64/v8,linux/arm/v7
           push: true
-          tags: nanomad/poetry:2.3.2-python-3.12
+          tags: nanomad/poetry:${{ env.POETRY_VERSION }}-python-${{ matrix.python-version }}
           build-args: |
-            PYTHON_VERSION=3.12
-            POETRY_VERSION=2.3.2
-
-      - name: Build and push (Python 3.13)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8,linux/arm/v7
-          push: true
-          tags: nanomad/poetry:2.3.2-python-3.13
-          build-args: |
-            PYTHON_VERSION=3.13
-            POETRY_VERSION=2.3.2
-
-      - name: Build and push (Python 3.14)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8,linux/arm/v7
-          push: true
-          tags: nanomad/poetry:2.3.2-python-3.14
-          build-args: |
-            PYTHON_VERSION=3.14
-            POETRY_VERSION=2.3.2
+            PYTHON_VERSION=${{ matrix.python-version }}
+            POETRY_VERSION=${{ env.POETRY_VERSION }}
