@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  POETRY_VERSION: "2.3.2"
+  POETRY_VERSION: "2.5.1"
   IMAGE_NAME: nanomad/poetry
 
 jobs:

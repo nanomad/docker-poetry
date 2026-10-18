@@ -2,5 +2,20 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^Dockerfile$/",
+        "/^docker-compose\\.yml$/",
+        "/^\\.github/workflows/docker-build\\.yml$/"
+      ],
+      "matchStrings": [
+        "POETRY_VERSION[=:]\\s*\"?(?<currentValue>\\d+\\.\\d+\\.\\d+)\"?"
+      ],
+      "datasourceTemplate": "pypi",
+      "depNameTemplate": "poetry"
+    }
   ]
 }
