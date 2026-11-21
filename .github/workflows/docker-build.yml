@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  POETRY_VERSION: "2.5.1"
+  POETRY_VERSION: "2.5.2"
   IMAGE_NAME: nanomad/poetry
 
 jobs:

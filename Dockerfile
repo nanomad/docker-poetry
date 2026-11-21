@@ -16,7 +16,7 @@ RUN apt-get update  \
             curl \
     && rm -rf /var/lib/apt/lists/*
 
-ARG POETRY_VERSION=2.5.1
+ARG POETRY_VERSION=2.5.2
 ENV POETRY_VERSION=${POETRY_VERSION}
 ENV POETRY_HOME=/opt/poetry
 ENV POETRY_NO_INTERACTION=1
